@@ -25,6 +25,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -72,6 +74,7 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <AntDesignIcon name="stepforward" size={30} />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
