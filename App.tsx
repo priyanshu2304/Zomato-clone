@@ -74,7 +74,7 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
-        <AntDesignIcon name="stepforward" size={30} />
+        <AntDesignIcon name="stepforward" size={20} />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
