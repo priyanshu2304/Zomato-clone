@@ -1,7 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionics from 'react-native-vector-icons/Ionicons';
 type HotelProps = {
   restaurant: {
     id: String;

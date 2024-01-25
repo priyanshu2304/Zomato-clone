@@ -55,7 +55,7 @@ const HomeScreen = () => {
           </Pressable>
           <ItemComponents />
           {data.map(item => (
-            <Hotels restaurant={item} />
+            <Hotels restaurant={item} key={item.id} />
           ))}
         </ScrollView>
       </View>
