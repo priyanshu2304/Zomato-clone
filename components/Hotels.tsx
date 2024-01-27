@@ -1,6 +1,7 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 type HotelProps = {
   restaurant: {
     id: String;
@@ -34,9 +35,12 @@ const Hotels = ({restaurant}: HotelProps) => {
     longitude,
     time,
   } = restaurant;
+  const navigation = useNavigation();
   return (
     <View>
-      <View style={{margin: 10}}>
+      <Pressable
+        style={{margin: 10}}
+        onPress={() => (navigation as any).navigate('Home')}>
         <Image
           style={{
             width: '100%',
@@ -160,7 +164,7 @@ const Hotels = ({restaurant}: HotelProps) => {
             </Text>
           </View>
         </View>
-      </View>
+      </Pressable>
     </View>
   );
 };
