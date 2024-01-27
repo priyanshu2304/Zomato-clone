@@ -120,7 +120,7 @@
 
 // export default App;
 
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -133,11 +133,11 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Main"
+          name="HomeScreen"
           component={HomeScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Home" component={HomeRooms} />
+        <Stack.Screen name="HomeRoom" component={HomeRooms} />
       </Stack.Navigator>
     </NavigationContainer>
   );
