@@ -40,7 +40,11 @@ const Hotels = ({restaurant}: HotelProps) => {
     <View>
       <Pressable
         style={{margin: 10}}
-        onPress={() => (navigation as any).navigate('HomeRoom')}>
+        onPress={() =>
+          (navigation as any).navigate('HomeRoom', {
+            ...restaurant,
+          })
+        }>
         <Image
           style={{
             width: '100%',
