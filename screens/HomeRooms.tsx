@@ -6,7 +6,7 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -16,6 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MenuData from '../data/menuData';
 import Menu from '../components/Menu';
+import {CartItems} from '../Context';
 type restaurant = {
   id: String;
   featured_image: string;
@@ -61,6 +62,7 @@ const HomeRooms = () => {
   } = route.params as restaurant;
   const navigation = useNavigation();
   const data = MenuData;
+  const {cart, setCart} = useContext(CartItems);
   return (
     <SafeAreaView style={{backgroundColor: 'white'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -227,7 +229,12 @@ const HomeRooms = () => {
             }}
           />
           {data.map(item => (
-            <Menu menu={item as menuProps} key={item.id} />
+            <Menu
+              menu={item as menuProps}
+              key={item.id}
+              cart={cart}
+              setCart={setCart}
+            />
           ))}
         </View>
       </ScrollView>

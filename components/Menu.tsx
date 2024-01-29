@@ -11,23 +11,27 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-type MenuProps = {
-  menu: {
-    id: string;
-    name: string;
-    price: string;
-    review: number;
-    star: number;
-    bestSeller?: string;
-    image: string;
-    mustTry?: string;
-  };
+type MenuItem = {
+  id: string;
+  name: string;
+  price: string;
+  review: number;
+  star: number;
+  bestSeller?: string;
+  image: string;
+  mustTry?: string;
 };
 
-const Menu = ({menu}: MenuProps) => {
+type MenuProps = {
+  menu: MenuItem;
+  cart: MenuItem[];
+  setCart: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+};
+
+const Menu = ({menu, cart, setCart}: MenuProps) => {
   const {id, name, price, review, star, bestSeller, image, mustTry} = menu;
   const [additems, setAdditems] = useState(0);
-
+  console.log(cart);
   return (
     // <Pressable>
     <Pressable>
@@ -152,7 +156,7 @@ const Menu = ({menu}: MenuProps) => {
           <Pressable
             onPress={() => {
               setAdditems(Math.max(0, additems - 1));
-              //   setCart(cart.filter(p => p.id !== menu.id));
+              setCart(cart.filter(p => p.id !== menu.id));
             }}>
             <Text style={{fontSize: 25, color: 'white', paddingHorizontal: 10}}>
               -
@@ -167,7 +171,7 @@ const Menu = ({menu}: MenuProps) => {
 
           <Pressable
             onPress={() => {
-              //   setCart([...cart, menu]);
+              setCart([...cart, menu]);
               setAdditems(additems + 1);
             }}>
             <Text style={{fontSize: 20, color: 'white', paddingHorizontal: 10}}>
