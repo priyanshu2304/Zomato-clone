@@ -31,7 +31,7 @@ type MenuProps = {
 const Menu = ({menu, cart, setCart}: MenuProps) => {
   const {id, name, price, review, star, bestSeller, image, mustTry} = menu;
   const [additems, setAdditems] = useState(0);
-  console.log(cart);
+
   return (
     // <Pressable>
     <Pressable>

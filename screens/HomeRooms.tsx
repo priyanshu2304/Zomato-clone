@@ -17,6 +17,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import MenuData from '../data/menuData';
 import Menu from '../components/Menu';
 import {CartItems} from '../Context';
+import ViewCarts from '../components/ViewCarts';
 type restaurant = {
   id: String;
   featured_image: string;
@@ -238,6 +239,7 @@ const HomeRooms = () => {
           ))}
         </View>
       </ScrollView>
+      <ViewCarts />
     </SafeAreaView>
   );
 };
