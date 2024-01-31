@@ -1,8 +1,33 @@
-import {Pressable, StyleSheet, Text, View, Modal, Alert} from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import React, {useContext, useState} from 'react';
 import {CartItems} from '../Context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-const ViewCarts = () => {
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+type menuProps = {
+  id: string;
+  name: string;
+  price: string;
+  review: number;
+  star: number;
+  bestSeller?: string;
+  image: string;
+  mustTry?: string;
+};
+type restaurant = {
+  restaurantName: string;
+};
+const ViewCarts = (props: restaurant) => {
+  const {restaurantName} = props;
   const {cart, setCart} = useContext(CartItems);
   const [modal, setModal] = useState(false);
   const total = cart
@@ -25,13 +50,211 @@ const ViewCarts = () => {
           }}>
           <AntDesign name="closecircle" size={44} />
         </Pressable>
+
         <View
           style={{
             height: 500,
             backgroundColor: 'white',
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
-          }}></View>
+            padding: 10,
+          }}>
+          <Text
+            style={{
+              textAlign: 'center',
+              marginTop: 8,
+              color: 'red',
+              fontSize: 17,
+            }}>
+            {restaurantName}
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: 10,
+            }}>
+            <MaterialCommunityIcons size={24} name="timer" color="green" />
+            <Text style={{paddingLeft: 5, fontWeight: '600'}}>
+              Delivery in 30mins
+            </Text>
+          </View>
+          <View
+            style={{
+              borderColor: '#78787867',
+              height: 1,
+              borderWidth: 1,
+              marginTop: 10,
+            }}
+          />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {cart.map((item: menuProps) => (
+              <View
+                key={item.id}
+                style={{
+                  flexDirection: 'row',
+                  alignContent: 'center',
+                  justifyContent: 'space-between',
+                  paddingTop: 10,
+                }}>
+                <Text
+                  style={{color: '#e52b50', fontSize: 16, fontWeight: 'bold'}}>
+                  {item.name}
+                </Text>
+                <Text
+                  style={{color: '#e52b50', fontSize: 16, fontWeight: '500'}}>
+                  {item.price}
+                </Text>
+              </View>
+            ))}
+
+            <View
+              style={{
+                borderColor: '#78787867',
+                height: 1,
+                borderWidth: 1,
+                marginTop: 10,
+              }}
+            />
+            <View style={{paddingTop: 10}}>
+              <Text>Offers</Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingTop: 5,
+                }}>
+                <MaterialCommunityIcons
+                  name="brightness-percent"
+                  size={24}
+                  color="blue"
+                />
+                <Text style={{paddingLeft: 5}}>Select a Promo code</Text>
+              </View>
+              <View
+                style={{
+                  borderColor: '#78787867',
+                  height: 1,
+                  borderWidth: 1,
+                  marginTop: 10,
+                }}
+              />
+              <View>
+                <Text
+                  style={{fontWeight: 'bold', fontSize: 15, paddingTop: 10}}>
+                  Climate Conscious Delivery
+                </Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    paddingTop: 10,
+                    alignItems: 'center',
+                  }}>
+                  <MaterialIcons name="fastfood" size={24} color="green" />
+                  <View style={{paddingLeft: 10}}>
+                    <Text style={{color: 'green', fontSize: 16}}>
+                      Don't send cultery tissues and star
+                    </Text>
+                    <Text style={{fontSize: 16}}>
+                      Thank you for caring for environment
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={{
+                  borderColor: '#78787867',
+                  height: 1,
+                  borderWidth: 1,
+                  marginTop: 10,
+                }}
+              />
+              <View
+                style={{
+                  paddingTop: 10,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <Entypo name="leaf" size={24} color="green" />
+                <Text style={{paddingLeft: 10}}>
+                  We fund environment projects to offset carbon footprint of our
+                  deliveries
+                </Text>
+              </View>
+              <View
+                style={{
+                  borderColor: '#78787867',
+                  height: 1,
+                  borderWidth: 2,
+                  marginTop: 10,
+                }}
+              />
+              <View style={{backgroundColor: '#f0e68c'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: 10,
+                  }}>
+                  <Text style={{color: 'white'}}>Item Total</Text>
+                  <Text>₹{total}</Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: 10,
+                  }}>
+                  <Text>Delivery Fee</Text>
+                  <Text>₹50</Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: 10,
+                  }}>
+                  <Text>Donation Fee</Text>
+                  <Text>₹3</Text>
+                </View>
+              </View>
+              <View
+                style={{
+                  borderColor: '#78787867',
+                  height: 1,
+                  borderWidth: 2,
+                  marginTop: 10,
+                }}
+              />
+            </View>
+          </ScrollView>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingVertical: 10,
+            }}>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>Grand Total </Text>
+            <Text style={{marginRight: 20, fontWeight: 'bold'}}>
+              ₹{total + 50 + 3}
+            </Text>
+          </View>
+          <Pressable style={{backgroundColor: 'red'}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                padding: 10,
+                fontSize: 18,
+                fontWeight: 'bold',
+              }}>
+              Place Order
+            </Text>
+          </Pressable>
+        </View>
       </View>
     );
   };

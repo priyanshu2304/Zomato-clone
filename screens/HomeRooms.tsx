@@ -239,7 +239,7 @@ const HomeRooms = () => {
           ))}
         </View>
       </ScrollView>
-      <ViewCarts />
+      <ViewCarts restaurantName={name} />
     </SafeAreaView>
   );
 };
