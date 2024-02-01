@@ -239,7 +239,7 @@ const ViewCarts = (props: restaurant) => {
               paddingVertical: 10,
             }}>
             <Text style={{fontSize: 16, fontWeight: 'bold'}}>Grand Total </Text>
-            <Text style={{marginRight: 20, fontWeight: 'bold'}}>
+            <Text style={{marginRight: 20, fontWeight: '700'}}>
               ₹{total + 50 + 3}
             </Text>
           </View>
