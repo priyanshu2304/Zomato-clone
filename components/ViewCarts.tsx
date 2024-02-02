@@ -13,6 +13,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useNavigation} from '@react-navigation/native';
 type menuProps = {
   id: string;
   name: string;
@@ -33,6 +34,14 @@ const ViewCarts = (props: restaurant) => {
   const total = cart
     .map((item: {price: string}) => Number(item.price.replace('₹', '')))
     .reduce((prev: any, curr: any) => prev + curr, 0);
+  const navigation = useNavigation();
+  const onPress = () => {
+    setModal(false);
+    setCart([]);
+    (navigation as any).navigate('OrderData', {
+      data: {restaurantName: restaurantName},
+    });
+  };
   const checkout = () => {
     return (
       <View
@@ -243,7 +252,7 @@ const ViewCarts = (props: restaurant) => {
               ₹{total + 50 + 3}
             </Text>
           </View>
-          <Pressable style={{backgroundColor: 'red'}}>
+          <Pressable style={{backgroundColor: 'red'}} onPress={onPress}>
             <Text
               style={{
                 textAlign: 'center',

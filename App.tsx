@@ -126,7 +126,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import HomeRooms from './screens/HomeRooms';
+import OrderData from './screens/OrderData';
 import {BasketContext} from './Context';
+
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -141,6 +143,11 @@ const App = () => {
           <Stack.Screen
             name="HomeRoom"
             component={HomeRooms}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="OrderData"
+            component={OrderData}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
