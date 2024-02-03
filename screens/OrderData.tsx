@@ -57,7 +57,7 @@ const OrderData = () => {
           textAlign: 'center',
           marginTop: 10,
         }}>
-        Food Preparation will begin shortly!!
+        Food Preparation will begin shortly!!!
       </Text>
     </SafeAreaView>
   );
